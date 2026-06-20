@@ -1,4 +1,4 @@
-﻿ @model My_Friend_Tracking_App.Models.MapViewModel
+﻿@model My_Friend_Tracking_App.Models.MapViewModel
 @{
     ViewData["Title"] = "Map Tracker Dashboard";
 }
@@ -50,29 +50,49 @@
         color: #ffffff;
     }
 
-    .location-gate.hidden { display: none; }
+        .location-gate.hidden {
+            display: none;
+        }
 
-    .location-gate .gate-icon {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.12);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 38px;
-        margin-bottom: 22px;
-        animation: pulseGate 2s infinite;
-    }
+        .location-gate .gate-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin-bottom: 22px;
+            animation: pulseGate 2s infinite;
+        }
 
     @@keyframes pulseGate {
-        0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.35); }
-        70% { box-shadow: 0 0 0 20px rgba(255,255,255,0); }
-        100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+        0% {
+            box-shadow: 0 0 0 0 rgba(255,255,255,0.35);
+        }
+
+        70% {
+            box-shadow: 0 0 0 20px rgba(255,255,255,0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(255,255,255,0);
+        }
     }
 
-    .location-gate h2 { font-size: 19px; margin: 0 0 10px; }
-    .location-gate p { font-size: 13px; color: #d6e6f7; max-width: 320px; line-height: 1.5; margin: 0 0 22px; }
+    .location-gate h2 {
+        font-size: 19px;
+        margin: 0 0 10px;
+    }
+
+    .location-gate p {
+        font-size: 13px;
+        color: #d6e6f7;
+        max-width: 320px;
+        line-height: 1.5;
+        margin: 0 0 22px;
+    }
 
     .gate-btn {
         background: #ffffff;
@@ -86,7 +106,9 @@
         box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     }
 
-    .gate-btn:active { transform: scale(0.97); }
+        .gate-btn:active {
+            transform: scale(0.97);
+        }
 
     .gate-hint {
         margin-top: 16px;
@@ -119,8 +141,13 @@
         line-height: 1.6;
     }
 
-    .gate-blocked-box.show { display: block; }
-    .gate-blocked-box b { color: #ffe8a3; }
+        .gate-blocked-box.show {
+            display: block;
+        }
+
+        .gate-blocked-box b {
+            color: #ffe8a3;
+        }
 
     /* ============ MAP UI ============ */
     .map-overlay-search {
@@ -137,15 +164,15 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
 
-    .map-overlay-search input {
-        border: none;
-        background: transparent;
-        color: #1e293b;
-        margin-left: 10px;
-        flex: 1;
-        outline: none;
-        font-size: 14px;
-    }
+        .map-overlay-search input {
+            border: none;
+            background: transparent;
+            color: #1e293b;
+            margin-left: 10px;
+            flex: 1;
+            outline: none;
+            font-size: 14px;
+        }
 
     /* ====== LIVE SEARCH DROPDOWN ====== */
     .search-suggestions {
@@ -162,7 +189,9 @@
         display: none;
     }
 
-    .search-suggestions.show { display: block; }
+        .search-suggestions.show {
+            display: block;
+        }
 
     .suggestion-item {
         display: flex;
@@ -173,18 +202,27 @@
         cursor: pointer;
     }
 
-    .suggestion-item:last-child { border-bottom: none; }
-    .suggestion-item:hover { background: #f8fafc; }
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
 
-    .suggestion-item i {
-        color: #94a3b8;
-        font-size: 14px;
-        width: 18px;
-        text-align: center;
-        flex-shrink: 0;
+        .suggestion-item:hover {
+            background: #f8fafc;
+        }
+
+        .suggestion-item i {
+            color: #94a3b8;
+            font-size: 14px;
+            width: 18px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+    .suggestion-text {
+        flex: 1;
+        overflow: hidden;
     }
 
-    .suggestion-text { flex: 1; overflow: hidden; }
     .suggestion-main {
         font-size: 13.5px;
         color: #1e293b;
@@ -193,6 +231,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
     .suggestion-sub {
         font-size: 11.5px;
         color: #94a3b8;
@@ -221,7 +260,9 @@
         pointer-events: none;
     }
 
-    .filter-chips::-webkit-scrollbar { display: none; }
+        .filter-chips::-webkit-scrollbar {
+            display: none;
+        }
 
     .chip {
         background: #ffffff;
@@ -240,11 +281,11 @@
         transition: 0.15s;
     }
 
-    .chip.active-chip {
-        background: #0b5499;
-        color: #fff;
-        border-color: #0b5499;
-    }
+        .chip.active-chip {
+            background: #0b5499;
+            color: #fff;
+            border-color: #0b5499;
+        }
 
     .chip-loading {
         position: absolute;
@@ -262,7 +303,9 @@
         gap: 6px;
     }
 
-    .chip-loading.show { display: flex; }
+        .chip-loading.show {
+            display: flex;
+        }
 
     .permission-toggle-btn {
         position: absolute;
@@ -296,7 +339,9 @@
         overflow-y: auto;
     }
 
-    .permission-panel.active { right: 15px; }
+        .permission-panel.active {
+            right: 15px;
+        }
 
     .permission-item {
         display: flex;
@@ -307,8 +352,17 @@
         padding-bottom: 8px;
     }
 
-    .permission-text h5 { margin: 0; font-size: 13px; color: #1e293b; }
-    .permission-text p  { margin: 2px 0 0 0; font-size: 10px; color: #64748b; }
+    .permission-text h5 {
+        margin: 0;
+        font-size: 13px;
+        color: #1e293b;
+    }
+
+    .permission-text p {
+        margin: 2px 0 0 0;
+        font-size: 10px;
+        color: #64748b;
+    }
 
     .switch {
         position: relative;
@@ -319,25 +373,43 @@
         margin-left: 10px;
     }
 
-    .switch input { opacity: 0; width: 0; height: 0; }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
     .slider {
-        position: absolute; cursor: pointer;
-        top: 0; left: 0; right: 0; bottom: 0;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background-color: #cbd5e1;
-        transition: .3s; border-radius: 34px;
+        transition: .3s;
+        border-radius: 34px;
     }
 
-    .slider:before {
-        position: absolute; content: "";
-        height: 16px; width: 16px;
-        left: 3px; bottom: 3px;
-        background-color: white;
-        transition: .3s; border-radius: 50%;
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+    input:checked + .slider {
+        background-color: #10b981;
     }
 
-    input:checked + .slider { background-color: #10b981; }
-    input:checked + .slider:before { transform: translateX(18px); }
+        input:checked + .slider:before {
+            transform: translateX(18px);
+        }
 
     .share-row {
         display: flex;
@@ -361,7 +433,10 @@
         gap: 6px;
     }
 
-    .share-btn.secondary { background: #eff6ff; color: #0b5499; }
+        .share-btn.secondary {
+            background: #eff6ff;
+            color: #0b5499;
+        }
 
     .locate-fab {
         position: absolute;
@@ -416,6 +491,7 @@
         color: #0b5499;
     }
 
+    /* ============ FRIEND CARDS (linked to Friends page) ============ */
     .user-card {
         background-color: #ffffff;
         border-radius: 16px;
@@ -424,7 +500,15 @@
         align-items: center;
         margin-bottom: 12px;
         border: 1px solid #e2e8f0;
+        text-decoration: none;
+        transition: box-shadow 0.15s, border-color 0.15s;
     }
+
+        .user-card:hover {
+            box-shadow: 0 4px 16px rgba(11,84,153,0.10);
+            border-color: #bfdbfe;
+            text-decoration: none;
+        }
 
     .user-avatar {
         width: 45px;
@@ -442,20 +526,33 @@
         position: relative;
     }
 
-    .user-avatar .dot-live {
-        position: absolute;
-        bottom: -2px;
-        right: -2px;
-        width: 12px;
-        height: 12px;
-        background: #10b981;
-        border: 2px solid #fff;
-        border-radius: 50%;
+        .user-avatar .dot-live {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 12px;
+            height: 12px;
+            background: #10b981;
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+
+    .user-info {
+        flex: 1;
     }
 
-    .user-info { flex: 1; }
-    .user-info h4 { font-size: 14px; font-weight: 600; color: #1e293b; margin: 0; }
-    .user-info p  { font-size: 12px; color: #64748b; margin: 2px 0 0 0; }
+        .user-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .user-info p {
+            font-size: 12px;
+            color: #64748b;
+            margin: 2px 0 0 0;
+        }
 
     .action-btn {
         background-color: #eff6ff;
@@ -466,7 +563,33 @@
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
+        text-decoration: none;
     }
+
+    /* ============ MANAGE FRIENDS BUTTON ============ */
+    .manage-friends-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        background: #eff6ff;
+        color: #0b5499;
+        border: 1.5px dashed #93c5fd;
+        border-radius: 14px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.15s;
+    }
+
+        .manage-friends-btn:hover {
+            background: #dbeafe;
+            text-decoration: none;
+        }
 
     .bottom-nav {
         position: relative;
@@ -492,15 +615,50 @@
         border: none;
     }
 
-    .nav-item i { font-size: 20px; margin-bottom: 3px; }
-    .nav-item.active { color: #0b5499; font-weight: 600; }
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+
+        .nav-item.active {
+            color: #0b5499;
+            font-weight: 600;
+        }
+
+    /* ============ PROFILE TOAST NOTIFICATION ============ */
+    .profile-toast {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-80px);
+        z-index: 9999;
+        background: #0b5499;
+        color: #fff;
+        padding: 11px 20px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 6px 20px rgba(11,84,153,0.35);
+        transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s;
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+
+        .profile-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
 
     .leaflet-popup-content-wrapper {
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.12);
     }
 
-    /* ============ BLINKING LIVE MARKER (pure CSS, used inside Leaflet divIcon) ============ */
+    /* ============ BLINKING LIVE MARKER ============ */
     .live-marker-wrap {
         position: relative;
         width: 26px;
@@ -509,7 +667,8 @@
 
     .live-marker-ring {
         position: absolute;
-        top: 50%; left: 50%;
+        top: 50%;
+        left: 50%;
         width: 26px;
         height: 26px;
         margin-top: -13px;
@@ -519,19 +678,35 @@
         animation: liveBlink 1.6s infinite ease-out;
     }
 
-    /* Friends use blue, but ALL place categories (restaurant/coffee/gas/shop) use RED per request */
-    .live-marker-ring.friend-ring { background: rgba(11, 84, 153, 0.45); }
-    .live-marker-ring.place-ring  { background: rgba(239, 68, 68, 0.45); }
+        .live-marker-ring.friend-ring {
+            background: rgba(11, 84, 153, 0.45);
+        }
+
+        .live-marker-ring.place-ring {
+            background: rgba(239, 68, 68, 0.45);
+        }
 
     @@keyframes liveBlink {
-        0%   { transform: scale(0.4); opacity: 0.9; }
-        70%  { transform: scale(1.8); opacity: 0; }
-        100% { transform: scale(1.8); opacity: 0; }
+        0% {
+            transform: scale(0.4);
+            opacity: 0.9;
+        }
+
+        70% {
+            transform: scale(1.8);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1.8);
+            opacity: 0;
+        }
     }
 
     .live-marker-dot {
         position: absolute;
-        top: 50%; left: 50%;
+        top: 50%;
+        left: 50%;
         width: 14px;
         height: 14px;
         margin-top: -7px;
@@ -543,34 +718,47 @@
         transition: transform 0.4s ease;
     }
 
-    .live-marker-dot.friend-dot { background: #0b5499; }
-    .live-marker-dot.place-dot {
-        background: #ef4444;
-        border-radius: 6px;
-        width: 16px; height: 16px;
-        margin-top: -8px; margin-left: -8px;
-        display: flex; align-items: center; justify-content: center;
-    }
+        .live-marker-dot.friend-dot {
+            background: #0b5499;
+        }
+
+        .live-marker-dot.place-dot {
+            background: #ef4444;
+            border-radius: 6px;
+            width: 16px;
+            height: 16px;
+            margin-top: -8px;
+            margin-left: -8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
     .friend-marker-icon {
         transition: transform 0.4s ease;
     }
 </style>
 
-<!-- ==================== LOCATION GATE (shown when permission OFF/denied) ==================== -->
+<!-- ==================== PROFILE TOAST NOTIFICATION ==================== -->
+<div class="profile-toast" id="profileToast">
+    <i class="fas fa-user-circle"></i>
+    <span id="profileToastMsg">Opening your profile...</span>
+</div>
+
+<!-- ==================== LOCATION GATE ==================== -->
 <div class="location-gate" id="locationGate">
     <div class="gate-icon"><i class="fas fa-map-marker-alt"></i></div>
-    <h2>Location Access Zaroori Hai</h2>
+    <h2>Location Access Required</h2>
     <p>
-        Map aur live tracking chalane ke liye apni location ki permission allow karein.
-        Bina location ke map start nahi hoga.
+        Please allow location permission to start the map and live tracking.
+        The map will not load without your location.
     </p>
     <button class="gate-btn" id="gateAllowBtn" onclick="requestLocationAccess()">
         <i class="fas fa-location-arrow"></i>&nbsp; Allow Location
     </button>
     <div class="gate-status" id="gateStatus"></div>
     <div class="gate-blocked-box" id="gateBlockedBox"></div>
-    <span class="gate-hint" onclick="openOsSettingsHint()">Permission allow nahi ho rahi? Yahan tap karein</span>
+    <span class="gate-hint" onclick="openOsSettingsHint()">Permission not working? Tap here for help</span>
 </div>
 
 <!-- ==================== MAP SCREEN ==================== -->
@@ -601,7 +789,7 @@
         </div>
 
         <div class="chip-loading" id="chipLoading">
-            <i class="fas fa-spinner fa-spin"></i> <span id="chipLoadingText">Dhoond rahe hain...</span>
+            <i class="fas fa-spinner fa-spin"></i> <span id="chipLoadingText">Searching...</span>
         </div>
 
         <div class="permission-toggle-btn" onclick="togglePermissionPanel()">
@@ -615,7 +803,7 @@
             <div class="permission-item">
                 <div class="permission-text">
                     <h5>Allow My Live Location</h5>
-                    <p>Doston ko live position dikhayein</p>
+                    <p>Show your live position to friends</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="permAllowLocation" checked onchange="updatePrivacySettings()">
@@ -625,7 +813,7 @@
             <div class="permission-item">
                 <div class="permission-text">
                     <h5>Save Location History</h5>
-                    <p>Database mein timestamps save karein</p>
+                    <p>Save timestamps to database</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="permSaveHistory" checked onchange="updatePrivacySettings()">
@@ -635,7 +823,7 @@
             <div class="permission-item" style="border-bottom:none;margin-bottom:10px;">
                 <div class="permission-text">
                     <h5>Background Tracking</h5>
-                    <p>App band hone par bhi track karein</p>
+                    <p>Track even when app is closed</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="permBackground" onchange="updatePrivacySettings()">
@@ -671,19 +859,22 @@
             <i class="fas fa-user-friends"></i><span>Friends</span>
         </div>
         <div class="nav-item">
-            <i class="fas fa-bell"></i><span>Notification</span>
+            <i class="fas fa-bell"></i><span>Notifications</span>
         </div>
-        <a asp-action="Profile" asp-controller="Account" class="nav-item">
+        <div class="nav-item" onclick="goToProfile()">
             <i class="fas fa-user-circle"></i><span>Profile</span>
-        </a>
+        </div>
     </div>
 </div>
 
 <!-- ==================== FRIENDS SCREEN ==================== -->
 <div class="mobile-screen" id="app-screen-friends" style="display:none;">
     <div class="list-header">
-        <span>Contact List</span>
-        <i class="fas fa-user-plus" style="cursor:pointer;" onclick="alert('Add Friend Feature coming soon!')"></i>
+        <span>My Friends</span>
+        <a asp-action="Index" asp-controller="Friends" title="Manage Friends"
+           style="color:#0b5499;text-decoration:none;">
+            <i class="fas fa-user-plus" style="cursor:pointer;"></i>
+        </a>
     </div>
     <div class="screen-content">
         <div id="contacts-list-container">
@@ -693,23 +884,33 @@
                 {
                     <div class="user-card">
                         <div class="user-avatar">
-                            @(string.IsNullOrEmpty(f.FullName) ? "F" : f.FullName.Substring(0,1).ToUpper())
+                            @(string.IsNullOrEmpty(f.FullName) ? "F" : f.FullName.Substring(0, 1).ToUpper())
                             <span class="dot-live"></span>
                         </div>
                         <div class="user-info">
                             <h4>@f.FullName</h4>
                             <p>@f.PhoneNo</p>
                         </div>
-                        <button class="action-btn" onclick="focusAndLocateFriend('@f.UserId')">Locate</button>
+                        <button class="action-btn" onclick="focusAndLocateFriend('@f.UserId')">
+                            <i class="fas fa-crosshairs"></i> Locate
+                        </button>
                     </div>
                 }
+
+                <!-- Link to full Friends management page -->
+                <a asp-action="Index" asp-controller="Friends" class="manage-friends-btn">
+                    <i class="fas fa-users-cog"></i> Manage Friends &amp; Requests
+                </a>
             }
             else
             {
                 <p style="color:#94a3b8;text-align:center;margin-top:40px;">
                     <i class="fas fa-user-friends" style="font-size:40px;display:block;margin-bottom:10px;"></i>
-                    Koi friend nahi mila
+                    No friends found
                 </p>
+                <a asp-action="Index" asp-controller="Friends" class="manage-friends-btn">
+                    <i class="fas fa-user-plus"></i> Add Your First Friend
+                </a>
             }
         </div>
     </div>
@@ -722,11 +923,11 @@
             <i class="fas fa-user-friends"></i><span>Friends</span>
         </div>
         <div class="nav-item">
-            <i class="fas fa-bell"></i><span>Notification</span>
+            <i class="fas fa-bell"></i><span>Notifications</span>
         </div>
-        <a asp-action="Profile" asp-controller="Account" class="nav-item">
+        <div class="nav-item" onclick="goToProfile()">
             <i class="fas fa-user-circle"></i><span>Profile</span>
-        </a>
+        </div>
     </div>
 </div>
 
@@ -737,22 +938,21 @@
 
     let liveMapInstance = null;
     let mainUserMarker = null;
-    let activeFriendMarkers = {};   // { id: { marker, popup, lastLat, lastLng } }
-    let placeMarkers = [];          // currently displayed restaurant/cafe/fuel/shop markers
-    let activePlaceCategory = null; // 'restaurant' | 'fuel' | 'cafe' | 'shop' | null
+    let activeFriendMarkers = {};
+    let placeMarkers = [];
+    let activePlaceCategory = null;
     let watchPositionId = null;
     let mapHasStarted = false;
     let searchDebounceTimer = null;
 
     const initialFriendMarkers = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(
-        Model.FriendMarkers ?? new List<My_Friend_Tracking_App.Models.FriendModel>()));
+                        Model.FriendMarkers ?? new List<My_Friend_Tracking_App.Models.FriendModel>()));
 
-    // Overpass tag filters per chip category
     const PLACE_QUERIES = {
         restaurant: '["amenity"~"restaurant|fast_food"]',
-        fuel:       '["amenity"="fuel"]',
-        cafe:       '["amenity"="cafe"]',
-        shop:       '["shop"]'
+        fuel: '["amenity"="fuel"]',
+        cafe: '["amenity"="cafe"]',
+        shop: '["shop"]'
     };
 
     const PLACE_ICONS = {
@@ -770,12 +970,28 @@
     };
 
     // ===================================================================
-    //  LIVE MARKER ICON BUILDERS (blinking radar-style — ALL red except friends)
+    //  PROFILE TOAST + NAVIGATION
+    // ===================================================================
+    function goToProfile() {
+        const toast = document.getElementById('profileToast');
+        const userName = "@(Model.CurrentUser?.FullName ?? "your profile")";
+        document.getElementById('profileToastMsg').textContent =
+            `Opening ${userName}'s profile...`;
+
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            window.location.href = '@Url.Action("Profile", "Account")';
+        }, 1200);
+    }
+
+    // ===================================================================
+    //  LIVE MARKER ICON BUILDERS
     // ===================================================================
     function buildLiveDivIcon(kind, category) {
-        // kind: 'me' | 'friend' | 'place'
         const ringClass = kind === 'friend' ? 'friend-ring' : (kind === 'place' ? 'place-ring' : '');
-        const dotClass  = kind === 'friend' ? 'friend-dot'  : (kind === 'place' ? 'place-dot'  : '');
+        const dotClass = kind === 'friend' ? 'friend-dot' : (kind === 'place' ? 'place-dot' : '');
         let innerIcon = '';
         if (kind === 'place' && category) {
             innerIcon = `<i class="fas ${PLACE_ICONS[category] || 'fa-map-marker-alt'}" style="color:#fff;font-size:8px;"></i>`;
@@ -784,10 +1000,10 @@
         return L.divIcon({
             className: 'friend-marker-icon',
             html: `
-                <div class="live-marker-wrap">
-                    <div class="live-marker-ring ${ringClass}"></div>
-                    <div class="live-marker-dot ${dotClass}">${innerIcon}</div>
-                </div>`,
+                    <div class="live-marker-wrap">
+                        <div class="live-marker-ring ${ringClass}"></div>
+                        <div class="live-marker-dot ${dotClass}">${innerIcon}</div>
+                    </div>`,
             iconSize: [26, 26],
             iconAnchor: [13, 13],
             popupAnchor: [0, -14]
@@ -795,7 +1011,7 @@
     }
 
     // ===================================================================
-    //  PERMISSION GATE — map NEVER initializes without real location
+    //  PERMISSION GATE
     // ===================================================================
     function showGate(message) {
         document.getElementById('locationGate').classList.remove('hidden');
@@ -810,25 +1026,23 @@
     function showBlockedHelp() {
         const box = document.getElementById('gateBlockedBox');
         box.innerHTML = `
-            <b>Permission browser mein blocked hai.</b><br>
-            Tap karne se popup nahi aayega jab tak aap manually unblock na karein:<br><br>
-            1. Address bar ke <b>shuru mein jo icon</b> hai (lock ya info icon) us par click karein.<br>
-            2. <b>"Location"</b> dhoondein &rarr; <b>Allow</b> select karein.<br>
-            3. Page reload karein, phir "Allow Location" dobara dabayein.
-        `;
+                <b>Location is blocked in your browser.</b><br>
+                The permission popup will not appear until you unblock it manually:<br><br>
+                1. Click the <b>icon at the start</b> of the address bar (lock or info icon).<br>
+                2. Find <b>"Location"</b> &rarr; select <b>Allow</b>.<br>
+                3. Reload the page, then press "Allow Location" again.
+            `;
         box.classList.add('show');
     }
 
     function requestLocationAccess() {
         if (!navigator.geolocation) {
-            showGate('Yeh browser/device location support nahi karta.');
+            showGate('This browser/device does not support location.');
             return;
         }
-        document.getElementById('gateStatus').textContent = 'Permission popup check ho rahi hai...';
+        document.getElementById('gateStatus').textContent = 'Checking permission popup...';
         document.getElementById('gateBlockedBox').classList.remove('show');
 
-        // This MUST run directly inside a user click (it does, since onclick calls it directly) —
-        // that's what makes the browser actually show its native permission popup.
         navigator.geolocation.getCurrentPosition(
             (pos) => {
                 hideGate();
@@ -836,12 +1050,12 @@
             },
             (err) => {
                 if (err.code === err.PERMISSION_DENIED) {
-                    showGate('Permission denied/blocked hai — popup khud nahi khulega.');
+                    showGate('Permission denied — popup cannot open automatically.');
                     showBlockedHelp();
                 } else if (err.code === err.TIMEOUT) {
-                    showGate('GPS signal nahi mila. Dobara try karein ya khuli jagah mein jayein.');
+                    showGate('GPS signal not found. Try again or move to an open area.');
                 } else {
-                    showGate('Location fetch nahi ho saki. Dobara try karein.');
+                    showGate('Could not fetch location. Please try again.');
                 }
             },
             { enableHighAccuracy: true, timeout: 12000 }
@@ -850,16 +1064,16 @@
 
     function openOsSettingsHint() {
         alert(
-            "Agar button dabane par kuch nahi ho raha:\n\n" +
-            "1) Browser: address bar ke pehle icon (lock/info) par tap karein > Location > Allow.\n\n" +
-            "2) Windows: Settings > Privacy & security > Location > Location services ko ON karein.\n\n" +
-            "Dono jagah ON hone ke baad page reload karein."
+            "If the button is not working:\n\n" +
+            "1) Browser: click the first icon in the address bar (lock/info) > Location > Allow.\n\n" +
+            "2) Windows: Settings > Privacy & security > Location > Turn Location services ON.\n\n" +
+            "After both are ON, reload the page."
         );
     }
 
     async function checkInitialPermissionState() {
         if (!navigator.permissions || !navigator.permissions.query) {
-            showGate('Map start karne ke liye location allow karein.');
+            showGate('Please allow location to start the map.');
             return;
         }
         try {
@@ -867,25 +1081,25 @@
             if (status.state === 'granted') {
                 requestLocationAccess();
             } else if (status.state === 'denied') {
-                showGate('Location permission denied hai. Settings se allow karein.');
+                showGate('Location permission is denied. Please allow it in browser settings.');
                 showBlockedHelp();
             } else {
-                showGate('Map start karne ke liye location allow karein.');
+                showGate('Please allow location to start the map.');
             }
             status.onchange = () => {
                 if (status.state === 'granted' && !mapHasStarted) requestLocationAccess();
                 if (status.state === 'denied') {
-                    showGate('Location permission denied hai.');
+                    showGate('Location permission denied.');
                     showBlockedHelp();
                 }
             };
         } catch (e) {
-            showGate('Map start karne ke liye location allow karein.');
+            showGate('Please allow location to start the map.');
         }
     }
 
     // ===================================================================
-    //  MAP INIT — only ever called with a REAL position, never hardcoded
+    //  MAP INIT
     // ===================================================================
     function startMapWithPosition(lat, lng) {
         if (mapHasStarted) return;
@@ -904,7 +1118,7 @@
 
         mainUserMarker = L.marker([lat, lng], { icon: buildLiveDivIcon('me') })
             .addTo(liveMapInstance)
-            .bindPopup('<b>Aap Ki Live Location</b>')
+            .bindPopup('<b>Your Live Location</b>')
             .openPopup();
 
         if (initialFriendMarkers && initialFriendMarkers.length > 0) {
@@ -955,7 +1169,7 @@
             if (err.code === err.PERMISSION_DENIED) {
                 stopContinuousTracking();
                 mapHasStarted = false;
-                showGate('Location permission band ho gayi hai.');
+                showGate('Location permission was revoked.');
                 showBlockedHelp();
             }
         }, { enableHighAccuracy: true });
@@ -969,7 +1183,7 @@
     }
 
     // ===================================================================
-    //  SMOOTH MARKER ANIMATION (slide + slight bearing rotation)
+    //  SMOOTH MARKER ANIMATION
     // ===================================================================
     function animateMarkerTo(marker, newLat, newLng, durationMs = 800) {
         const start = marker.getLatLng();
@@ -1010,13 +1224,13 @@
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         const popupHtml = `
-            <div style="font-family:sans-serif;min-width:140px;">
-                <strong style="color:#0b5499;">${friend.FullName}</strong><br>
-                <span style="font-size:11px;color:#475569;">${friend.PhoneNo || 'N/A'}</span><br>
-                <span style="font-size:10px;color:#10b981;font-weight:bold;">
-                    <i class="fas fa-circle" style="font-size:6px;"></i> Live: ${time}
-                </span>
-            </div>`;
+                <div style="font-family:sans-serif;min-width:140px;">
+                    <strong style="color:#0b5499;">${friend.FullName}</strong><br>
+                    <span style="font-size:11px;color:#475569;">${friend.PhoneNo || 'N/A'}</span><br>
+                    <span style="font-size:10px;color:#10b981;font-weight:bold;">
+                        <i class="fas fa-circle" style="font-size:6px;"></i> Live: ${time}
+                    </span>
+                </div>`;
 
         if (activeFriendMarkers[markerId]) {
             const entry = activeFriendMarkers[markerId];
@@ -1041,7 +1255,7 @@
                 entry.marker.openPopup();
             }, 200);
         } else {
-            alert("Is dost ki live location available nahi hai.");
+            alert("This friend's live location is not available.");
         }
     }
 
@@ -1059,8 +1273,7 @@
     }
 
     // ===================================================================
-    //  PLACE CHIPS (Restaurants / Gas / Coffee / Shops) via Overpass API
-    //  ALL categories render as red blinking markers, as requested.
+    //  PLACE CHIPS via Overpass API
     // ===================================================================
     function clearPlaceMarkers() {
         placeMarkers.forEach(m => liveMapInstance.removeLayer(m));
@@ -1069,11 +1282,10 @@
 
     async function togglePlaceChip(chipEl, category) {
         if (!liveMapInstance) {
-            alert("Map abhi load nahi hua. Pehle location allow karein.");
+            alert("Map not loaded yet. Please allow location first.");
             return;
         }
 
-        // Clicking the same active chip again turns it off
         if (activePlaceCategory === category) {
             clearPlaceMarkers();
             activePlaceCategory = null;
@@ -1081,27 +1293,26 @@
             return;
         }
 
-        // Switching category: clear old pins, mark new chip active
         clearPlaceMarkers();
         document.querySelectorAll('.chip').forEach(c => c.classList.remove('active-chip'));
         chipEl.classList.add('active-chip');
         activePlaceCategory = category;
 
         const loadingEl = document.getElementById('chipLoading');
-        document.getElementById('chipLoadingText').textContent = `${PLACE_LABELS[category]} dhoond rahe hain...`;
+        document.getElementById('chipLoadingText').textContent = `Searching for ${PLACE_LABELS[category]}...`;
         loadingEl.classList.add('show');
 
         try {
             const center = liveMapInstance.getCenter();
-            const radius = 2000; // meters
+            const radius = 2000;
             const filter = PLACE_QUERIES[category];
             const query = `
-                [out:json][timeout:15];
-                (
-                    node${filter}(around:${radius},${center.lat},${center.lng});
-                );
-                out body 35;
-            `;
+                    [out:json][timeout:15];
+                    (
+                        node${filter}(around:${radius},${center.lat},${center.lng});
+                    );
+                    out body 35;
+                `;
             const res = await fetch('https://overpass-api.de/api/interpreter', {
                 method: 'POST',
                 body: 'data=' + encodeURIComponent(query)
@@ -1110,11 +1321,10 @@
             if (!res.ok) throw new Error('Overpass request failed');
             const data = await res.json();
 
-            // Category might have changed while this request was in flight — abort if so.
             if (activePlaceCategory !== category) return;
 
             if (!data.elements || data.elements.length === 0) {
-                alert(`Is area mein ${PLACE_LABELS[category].toLowerCase()} nahi mile.`);
+                alert(`No ${PLACE_LABELS[category].toLowerCase()} found in this area.`);
                 loadingEl.classList.remove('show');
                 return;
             }
@@ -1127,16 +1337,16 @@
                 const marker = L.marker([place.lat, place.lon], { icon: buildLiveDivIcon('place', category) })
                     .addTo(liveMapInstance)
                     .bindPopup(`
-                        <div style="font-family:sans-serif;min-width:130px;">
-                            <strong style="color:#ef4444;"><i class="fas ${PLACE_ICONS[category]}"></i> ${name}</strong>
-                            ${extraTag ? `<br><span style="font-size:11px;color:#64748b;">${extraTag}</span>` : ''}
-                        </div>`);
+                            <div style="font-family:sans-serif;min-width:130px;">
+                                <strong style="color:#ef4444;"><i class="fas ${PLACE_ICONS[category]}"></i> ${name}</strong>
+                                ${extraTag ? `<br><span style="font-size:11px;color:#64748b;">${extraTag}</span>` : ''}
+                            </div>`);
 
                 placeMarkers.push(marker);
             });
         } catch (err) {
             console.error("Place fetch error:", err);
-            alert(`${PLACE_LABELS[category]} load nahi ho sakay. Dobara try karein.`);
+            alert(`Could not load ${PLACE_LABELS[category]}. Please try again.`);
             chipEl.classList.remove('active-chip');
             activePlaceCategory = null;
         } finally {
@@ -1149,7 +1359,7 @@
     // ===================================================================
     function shareLiveLocation() {
         if (!mainUserMarker) {
-            alert("Pehle apni location detect hone dein.");
+            alert("Please wait for your location to be detected.");
             return;
         }
         document.getElementById('permAllowLocation').checked = true;
@@ -1157,17 +1367,17 @@
 
         const pos = mainUserMarker.getLatLng();
         const mapsLink = `https://www.openstreetmap.org/?mlat=${pos.lat}&mlon=${pos.lng}#map=17/${pos.lat}/${pos.lng}`;
-        const shareText = `Meri live location dekhein: ${mapsLink}`;
+        const shareText = `View my live location: ${mapsLink}`;
 
         if (navigator.share) {
             navigator.share({
-                title: 'Meri Live Location',
+                title: 'My Live Location',
                 text: shareText,
                 url: mapsLink
-            }).catch(() => {});
+            }).catch(() => { });
         } else if (navigator.clipboard) {
             navigator.clipboard.writeText(shareText)
-                .then(() => alert("Live location link copy ho gaya! Ab WhatsApp ya kisi bhi app mein paste karein."))
+                .then(() => alert("Live location link copied! Paste it in WhatsApp or any app."))
                 .catch(() => alert(shareText));
         } else {
             alert(shareText);
@@ -1177,7 +1387,7 @@
     function stopSharingLocation() {
         document.getElementById('permAllowLocation').checked = false;
         updatePrivacySettings();
-        alert("Live location sharing band kar di gayi hai.");
+        alert("Live location sharing has been stopped.");
     }
 
     // ===================================================================
@@ -1191,7 +1401,6 @@
         const isAllowed = document.getElementById('permAllowLocation').checked;
         const saveHistory = document.getElementById('permSaveHistory').checked;
         const background = document.getElementById('permBackground').checked;
-        console.log(`Privacy -> AllowLocation: ${isAllowed}, SaveHistory: ${saveHistory}, Background: ${background}`);
 
         if (LOGGED_USER_ID && LOGGED_USER_ID !== "" && LOGGED_USER_ID !== "null") {
             fetch('/Home/UpdatePrivacySettings', {
@@ -1216,7 +1425,7 @@
             if (mainUserMarker) {
                 animateMarkerTo(mainUserMarker, lat, lng);
             }
-        }, () => { alert("GPS check karein."); });
+        }, () => { alert("Please check your GPS settings."); });
     }
 
     function switchDashboardTab(tab, el) {
@@ -1233,7 +1442,7 @@
     }
 
     // ===================================================================
-    //  LIVE SEARCH DROPDOWN (Nominatim autocomplete-style, like Google Maps)
+    //  LIVE SEARCH DROPDOWN
     // ===================================================================
     function initSearchBox() {
         const input = document.getElementById('mapSearchInput');
@@ -1250,10 +1459,9 @@
                 return;
             }
 
-            suggestionsBox.innerHTML = '<div class="suggestion-loading"><i class="fas fa-spinner fa-spin"></i> Dhoond rahe hain...</div>';
+            suggestionsBox.innerHTML = '<div class="suggestion-loading"><i class="fas fa-spinner fa-spin"></i> Searching...</div>';
             suggestionsBox.classList.add('show');
 
-            // debounce so we don't hammer the API on every keystroke
             searchDebounceTimer = setTimeout(() => fetchSearchSuggestions(query), 350);
         });
 
@@ -1267,7 +1475,6 @@
             }
         });
 
-        // hide dropdown when tapping elsewhere on the map
         document.addEventListener('click', (e) => {
             if (!suggestionsBox.contains(e.target) && e.target !== input) {
                 suggestionsBox.classList.remove('show');
@@ -1285,7 +1492,6 @@
         try {
             let url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&addressdetails=1&limit=6`;
 
-            // bias results toward the area currently shown on the map
             if (liveMapInstance) {
                 const b = liveMapInstance.getBounds();
                 url += `&viewbox=${b.getWest()},${b.getNorth()},${b.getEast()},${b.getSouth()}&bounded=0`;
@@ -1298,13 +1504,13 @@
                 if (data && data.length > 0) {
                     selectSearchResult(data[0]);
                 } else {
-                    alert("Location nahi mila.");
+                    alert("Location not found.");
                 }
                 return;
             }
 
             if (!data || data.length === 0) {
-                suggestionsBox.innerHTML = '<div class="suggestion-empty">Kuch nahi mila</div>';
+                suggestionsBox.innerHTML = '<div class="suggestion-empty">No results found</div>';
                 return;
             }
 
@@ -1316,18 +1522,18 @@
                 const item = document.createElement('div');
                 item.className = 'suggestion-item';
                 item.innerHTML = `
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="suggestion-text">
-                        <div class="suggestion-main">${mainName}</div>
-                        <div class="suggestion-sub">${subName}</div>
-                    </div>
-                `;
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="suggestion-text">
+                            <div class="suggestion-main">${mainName}</div>
+                            <div class="suggestion-sub">${subName}</div>
+                        </div>
+                    `;
                 item.onclick = () => selectSearchResult(place);
                 suggestionsBox.appendChild(item);
             });
         } catch (err) {
             console.error("Search suggestion error:", err);
-            suggestionsBox.innerHTML = '<div class="suggestion-empty">Search mein masla hua</div>';
+            suggestionsBox.innerHTML = '<div class="suggestion-empty">Search failed. Try again.</div>';
         }
     }
 
@@ -1347,7 +1553,7 @@
     // ===================================================================
     //  BOOTSTRAP
     // ===================================================================
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         checkInitialPermissionState();
         setInterval(fetchLiveMovingFriendsUpdates, 5000);
         initSearchBox();
@@ -1355,8 +1561,6 @@
 
     window.addEventListener('beforeunload', stopContinuousTracking);
 </script>
-
-
 
 ///-------------------------------------------------------------------------------------------------------------------------------------------//
 @*@model My_Friend_Tracking_App.Models.MapViewModel

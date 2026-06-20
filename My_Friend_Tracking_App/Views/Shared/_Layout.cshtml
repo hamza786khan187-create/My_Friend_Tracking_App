@@ -12,11 +12,11 @@
             :root {
                 --bg-color: #ffffff;
                 --card-bg: #ffffff;
-                --accent-color: #0b5499; /* Deep blue professional style */
+                --accent-color: #0b5499;
                 --accent-hover: #083f73;
                 --text-main: #1e293b;
                 --text-muted: #94a3b8;
-                --border-color: #cbd5e1; /* Clear light gray thin borders */
+                --border-color: #cbd5e1;
                 --error-color: #ef4444;
                 --success-color: #22c55e;
             }
@@ -30,7 +30,7 @@
             }
 
             body {
-                background-color: #f1f5f9; /* Soft background wrapper behind the device simulator */
+                background-color: #f1f5f9;
                 color: var(--text-main);
                 display: flex;
                 justify-content: center;
@@ -40,7 +40,6 @@
                 overflow-x: hidden;
             }
 
-            /* Pure system screens ko center alignment dene ke liye wrapper */
             .app-container {
                 display: flex;
                 justify-content: center;
@@ -50,7 +49,6 @@
                 position: relative;
             }
 
-            /* Premium Light Mobile Frame Design - Matches image_2b8ec5.png */
             .mobile-screen {
                 background-color: var(--bg-color);
                 border: 1px solid #e2e8f0;
@@ -64,12 +62,11 @@
                 box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
             }
 
-            /* Status bar setup - Icons aligned perfectly to the right side */
             .status-bar {
                 height: 40px;
                 padding: 0 28px;
                 display: flex;
-                justify-content: flex-end; /* Time hatane ke baad icons right side par push karne ke liye */
+                justify-content: flex-end;
                 align-items: center;
                 z-index: 10;
                 background-color: transparent;
@@ -95,7 +92,6 @@
                 overflow-y: auto;
             }
 
-            /* Real-time Toast Notification Layer over light design */
             .server-toast {
                 position: absolute;
                 top: 50px;
@@ -111,6 +107,9 @@
                 box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
             }
     </style>
+
+    @* ── Per-page CSS sections (Friends.cshtml, Map.cshtml, etc.) ── *@
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
 
@@ -141,6 +140,7 @@
             });
     </script>
 
+    @* ── Per-page JS sections ── *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
