@@ -1,0 +1,364 @@
+﻿@model My_Friend_Tracking_App.Models.UserSessionModel
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<style>
+    /* Full Screen Workspace Layout for Web Dashboard */
+    .dashboard-profile-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        background-color: #f1f5f9;
+        overflow-y: auto;
+    }
+
+    /* Professional Top Navigation Bar instead of mobile bottom nav */
+    .dashboard-top-nav {
+        background-color: #ffffff;
+        border-bottom: 1px solid #cbd5e1;
+        padding: 16px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .nav-brand {
+        color: #0b5499;
+        font-size: 20px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .nav-links-group {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .nav-link-item {
+        color: #64748b;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.2s;
+    }
+
+        .nav-link-item:hover, .nav-link-item.active {
+            color: #0b5499;
+        }
+
+    .btn-exit {
+        color: #ef4444;
+    }
+
+        .btn-exit:hover {
+            color: #b91c1c;
+        }
+
+    /* Responsive Grid Structure for the Profile Dashboard Content */
+    .profile-content-container {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 30px;
+        max-width: 1200px;
+        width: 100%;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    /* Left Side Identity Column */
+    .profile-summary-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 40px 24px;
+        text-align: center;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        height: fit-content;
+    }
+
+    .avatar-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .big-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #f8fafc;
+        color: #0b5499;
+        font-size: 44px;
+        font-weight: 700;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border: 4px solid #eff6ff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+        .big-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .upload-badge {
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        background: #10b981;
+        color: white;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #ffffff;
+        font-size: 13px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+    }
+
+        .upload-badge:hover {
+            transform: scale(1.1);
+        }
+
+    .user-meta-name {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 6px;
+    }
+
+    .user-meta-email {
+        font-size: 14px;
+        color: #64748b;
+    }
+
+    /* Right Side Forms Data Column */
+    .profile-details-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #0b5499;
+        margin-bottom: 24px;
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 10px;
+    }
+
+    .form-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #475569;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+        .input-group i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            color: #1e293b;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+            .input-group input:focus {
+                border-color: #0b5499;
+                box-shadow: 0 0 0 3px rgba(11, 84, 153, 0.1);
+            }
+
+    .location-box {
+        background-color: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 10px;
+        padding: 14px 20px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .location-details i {
+        color: #ef4444;
+        margin-right: 10px;
+    }
+
+    .location-details span {
+        font-size: 13px;
+        color: #475569;
+        font-family: monospace;
+    }
+
+    .btn-save {
+        background-color: #0b5499;
+        color: #ffffff;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: background-color 0.2s;
+        box-shadow: 0 4px 12px rgba(11, 84, 153, 0.15);
+    }
+
+        .btn-save:hover {
+            background-color: #083f73;
+        }
+</style>
+
+<div class="dashboard-profile-wrapper">
+
+    <nav class="dashboard-top-nav">
+        <a asp-action="Index" asp-controller="Home" class="nav-brand">Find My Friends</a>
+        <div class="nav-links-group">
+            <a asp-action="Index" asp-controller="Home" class="nav-link-item"><i class="fas fa-map-marked-alt"></i> Map Tracker</a>
+            <a asp-action="Index" asp-controller="Friends" class="nav-link-item"><i class="fas fa-user-friends"></i> Friends List</a>
+            <a asp-action="Profile" asp-controller="Account" class="nav-link-item active"><i class="fas fa-user-circle"></i> My Profile</a>
+            <a asp-action="Logout" asp-controller="Account" class="nav-link-item btn-exit"><i class="fas fa-sign-out-alt"></i> Exit Space</a>
+        </div>
+    </nav>
+
+    <div class="profile-content-container">
+
+        <div class="profile-summary-card">
+            <div class="avatar-wrapper">
+                <div class="big-avatar" id="avatarPreviewContainer">
+                    @if (!string.IsNullOrEmpty(Model.ProfileImage))
+                    {
+                        <img src="@Model.ProfileImage" id="imgDisplayElement" alt="User Profile" />
+                    }
+                    else
+                    {
+                        <span id="textInitialElement">@(!string.IsNullOrEmpty(Model.FullName) ? Model.FullName.Substring(0, 1).ToUpper() : "U")</span>
+                    }
+                </div>
+                <label for="imageUploadInput" class="upload-badge">
+                    <i class="fas fa-camera"></i>
+                </label>
+            </div>
+            <h3 class="user-meta-name">@Model.FullName</h3>
+            <p class="user-meta-email"><i class="far fa-envelope"></i> @Model.Email</p>
+        </div>
+
+        <div class="profile-details-card">
+            <h3 class="section-title">Account Parameters & Settings</h3>
+
+            <form asp-action="Profile" asp-controller="Account" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="UserId" />
+                <input type="hidden" asp-for="ProfileImage" id="hiddenProfileImageString" />
+
+                <input type="file" id="imageUploadInput" name="ProfileImageFile" accept="image/*" style="display: none;" onchange="previewSelectedProfileImage(this)" />
+
+                <label class="form-label">Full Account Identity Name</label>
+                <div class="input-group">
+                    <i class="far fa-user"></i>
+                    <input type="text" asp-for="FullName" placeholder="Your Name" required />
+                </div>
+
+                <label class="form-label">Registered Communications Email</label>
+                <div class="input-group">
+                    <i class="far fa-envelope"></i>
+                    <input type="email" asp-for="Email" placeholder="Email Address" required />
+                </div>
+
+                <label class="form-label">Phone Connectivity Number</label>
+                <div class="input-group">
+                    <i class="fas fa-phone-alt"></i>
+                    <input type="text" asp-for="PhoneNo" placeholder="Mobile Number Link" />
+                </div>
+
+                <label class="form-label">Live GPS Node Telemetry Sync Base</label>
+                <div class="location-box">
+                    <div class="location-details">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Last Saved Location Coordinates</span>
+                    </div>
+                    <i class="fas fa-sync fa-spin" style="color: #0b5499; font-size: 13px;"></i>
+                </div>
+
+                <button type="submit" class="btn-save"><i class="fas fa-save"></i> Save Profile Details</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Real-time client preview rendering engine
+    function previewSelectedProfileImage(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const container = document.getElementById('avatarPreviewContainer');
+
+                // Clear old initial layout nodes inside container block
+                container.innerHTML = "";
+
+                // Generate dynamic responsive image node preview
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.width = "100%";
+                img.style.height = "100%";
+                img.style.objectFit = "cover";
+
+                container.appendChild(img);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+@if (TempData["Success"] != null)
+{
+    <script>alert('@Html.Raw(TempData["Success"])');</script>
+}
+@if (TempData["Error"] != null)
+{
+    <script>alert('@Html.Raw(TempData["Error"])');</script>
+}

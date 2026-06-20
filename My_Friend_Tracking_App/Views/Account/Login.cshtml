@@ -1,0 +1,198 @@
+﻿@model My_Friend_Tracking_App.Models.LoginModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<style>
+    /* Full screen alignment zone for web logins */
+    .web-auth-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: #f1f5f9; /* Dashboard grey background */
+        padding: 20px;
+    }
+
+    /* Premium centered container card for websites */
+    .auth-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 420px;
+        padding: 40px 32px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    .brand-title {
+        color: #0b5499;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-align: center;
+        letter-spacing: -0.5px;
+    }
+
+    .brand-subtitle {
+        color: #64748b;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 36px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+        .input-group i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            color: #1e293b;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+            .input-group input:focus {
+                border-color: #0b5499;
+                box-shadow: 0 0 0 3px rgba(11, 84, 153, 0.1);
+            }
+
+    .password-toggle {
+        position: absolute;
+        right: 16px;
+        left: auto !important;
+        cursor: pointer;
+        color: #94a3b8 !important;
+        pointer-events: auto !important;
+    }
+
+    .btn-primary {
+        background-color: #0b5499;
+        color: #ffffff;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 16px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.2s;
+    }
+
+        .btn-primary:hover {
+            background-color: #083f73;
+        }
+
+    .btn-secondary {
+        background-color: #ffffff;
+        color: #1e293b;
+        border: 1px solid #cbd5e1;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 12px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        transition: all 0.2s;
+    }
+
+        .btn-secondary:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+    .validation-summary {
+        color: #ef4444;
+        font-size: 13px;
+        margin-bottom: 16px;
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .text-danger {
+        color: #ef4444;
+        font-size: 12px;
+        display: block;
+        margin-top: 4px;
+        padding-left: 4px;
+    }
+</style>
+
+<div class="web-auth-wrapper">
+    <div class="auth-card">
+        <h2 class="brand-title">Find My Friends</h2>
+        <p class="brand-subtitle">Sign in to access your tracking space</p>
+
+        <form asp-action="Login" asp-controller="Account" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            <div class="input-group">
+                <i class="far fa-envelope"></i>
+                <input type="email" asp-for="Email" placeholder="Email Address" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="txtPassword" asp-for="Password" placeholder="Password" required />
+                <i class="far fa-eye-slash password-toggle" onclick="togglePasswordVisibility()"></i>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn-primary">Sign In</button>
+            <a asp-action="Signup" asp-controller="Account" class="btn-secondary">Create Account</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function togglePasswordVisibility() {
+            const pwdField = document.getElementById("txtPassword");
+            const toggleIcon = document.querySelector(".password-toggle");
+            if (pwdField.type === "password") {
+                pwdField.type = "text";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            } else {
+                pwdField.type = "password";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
+}

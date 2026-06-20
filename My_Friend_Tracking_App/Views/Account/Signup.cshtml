@@ -1,0 +1,204 @@
+﻿@model My_Friend_Tracking_App.Models.SignupModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<style>
+    /* Full screen alignment zone for web authorization views */
+    .web-auth-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+        background-color: #f1f5f9; /* Dashboard grey background */
+        padding: 40px 20px;
+    }
+
+    /* Premium centered container card for websites */
+    .auth-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 460px;
+        padding: 36px 32px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
+
+    /* Top Navigation inside the card for sleek modern look */
+    .top-nav-bar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .back-arrow-link {
+        color: #64748b;
+        font-size: 18px;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+        .back-arrow-link:hover {
+            color: #0b5499;
+        }
+
+    .brand-title {
+        color: #0b5499;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        text-align: center;
+        letter-spacing: -0.5px;
+    }
+
+    .brand-subtitle {
+        color: #64748b;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    /* Input Field Container Units */
+    .input-group {
+        position: relative;
+        margin-bottom: 18px;
+        width: 100%;
+    }
+
+        .input-group i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            color: #1e293b;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+            .input-group input:focus {
+                border-color: #0b5499;
+                box-shadow: 0 0 0 3px rgba(11, 84, 153, 0.1);
+            }
+
+    /* Primary Action Buttons configuration */
+    .btn-primary {
+        background-color: #0b5499;
+        color: #ffffff;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 14px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.2s;
+    }
+
+        .btn-primary:hover {
+            background-color: #083f73;
+        }
+
+    /* Form Dynamic Validation Error Messages Design block */
+    .validation-summary {
+        color: #ef4444;
+        font-size: 13px;
+        margin-bottom: 16px;
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .text-danger, .field-validation-error {
+        color: #ef4444;
+        font-size: 12px;
+        display: block;
+        margin-top: 4px;
+        padding-left: 4px;
+    }
+</style>
+
+<div class="web-auth-wrapper">
+    <div class="auth-card">
+
+        <div class="top-nav-bar">
+            <a asp-action="Login" asp-controller="Account" class="back-arrow-link" title="Back to Sign In">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+
+        <h2 class="brand-title">Find My Friends</h2>
+        <p class="brand-subtitle">Create an account to start live tracking</p>
+
+        <form asp-action="Signup" asp-controller="Account" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            <div class="input-group">
+                <i class="far fa-user"></i>
+                <input type="text" asp-for="FullName" placeholder="Full Name" required />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="input-group">
+                <i class="far fa-envelope"></i>
+                <input type="email" asp-for="Email" placeholder="Email Address" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-phone-alt"></i>
+                <input type="text" asp-for="PhoneNo" placeholder="Phone Number (e.g. +92...)" />
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" asp-for="Password" placeholder="Password" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-shield-alt"></i>
+                <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" required />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn-primary">Create Account</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+}

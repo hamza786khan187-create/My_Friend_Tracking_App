@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Find My Friend</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+            :root {
+                --bg-color: #ffffff;
+                --card-bg: #ffffff;
+                --accent-color: #0b5499; /* Deep blue professional style */
+                --accent-hover: #083f73;
+                --text-main: #1e293b;
+                --text-muted: #94a3b8;
+                --border-color: #cbd5e1; /* Clear light gray thin borders */
+                --error-color: #ef4444;
+                --success-color: #22c55e;
+            }
+
+            * {
+                box-shadow: none;
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            }
+
+            body {
+                background-color: #f1f5f9; /* Soft background wrapper behind the device simulator */
+                color: var(--text-main);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 20px;
+                overflow-x: hidden;
+            }
+
+            /* Pure system screens ko center alignment dene ke liye wrapper */
+            .app-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                max-width: 1400px;
+                position: relative;
+            }
+
+            /* Premium Light Mobile Frame Design - Matches image_2b8ec5.png */
+            .mobile-screen {
+                background-color: var(--bg-color);
+                border: 1px solid #e2e8f0;
+                border-radius: 40px;
+                width: 360px;
+                height: 720px;
+                overflow: hidden;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
+            }
+
+            /* Status bar setup - Icons aligned perfectly to the right side */
+            .status-bar {
+                height: 40px;
+                padding: 0 28px;
+                display: flex;
+                justify-content: flex-end; /* Time hatane ke baad icons right side par push karne ke liye */
+                align-items: center;
+                z-index: 10;
+                background-color: transparent;
+            }
+
+                .status-bar .icons {
+                    display: flex;
+                    align-items: center;
+                    color: #000000;
+                }
+
+                    .status-bar .icons i {
+                        margin-left: 6px;
+                        font-size: 12px;
+                    }
+
+            .screen-content {
+                flex: 1;
+                padding: 40px 28px 20px 28px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                overflow-y: auto;
+            }
+
+            /* Real-time Toast Notification Layer over light design */
+            .server-toast {
+                position: absolute;
+                top: 50px;
+                left: 24px;
+                right: 24px;
+                background-color: var(--success-color);
+                color: white;
+                padding: 12px;
+                border-radius: 12px;
+                font-size: 13px;
+                text-align: center;
+                z-index: 100;
+                box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+            }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        @if (TempData["Success"] != null)
+        {
+            <div class="server-toast" id="global-toast">
+                @TempData["Success"]
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="server-toast" id="global-toast" style="background-color: var(--error-color);">
+                @TempData["Error"]
+            </div>
+        }
+
+        @RenderBody()
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const toast = document.getElementById("global-toast");
+                if (toast) {
+                    setTimeout(() => { toast.style.display = 'none'; }, 3500);
+                }
+            });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
